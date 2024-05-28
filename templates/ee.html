@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-12">
+        <form method="post">
+            {% csrf_token %}
+            <div> <input type="text" name="search"  /></div>
+            <div> <button type="submit"> like search</button> </div>
+            <div> <input type="text" name="peratio"  /></div>
+            <div> <button type="submit"> filter1</button> </div>
+        </form>
+    </div>
+</div>
+<!--price:{{price}}<br>
+volume:{{volume}}<br>
+revenue:{{revenue}}
+url:{{url}}<br>
+-->
+{{id}}
+{% for n in list %}
+    <a href="/stock-data/{{n.0}}">  {{n.1}} &nbsp; &nbsp;&nbsp;&nbsp; </a><br>
+{{n.0}}<br>
+{{n.7}}<br>
+{{n.8}}<br>
+{{n.9}}<br>
+{{data.n}} <br>
+{% endfor%}
+{{listd.0.0}}
+
+
+
+<!--<table>
+    <tr>
+        <th>Hostname</th>
+        <th>IP</th>
+        <th>Version</th>
+    </tr>
+    {% for key, value in inventory.items %}
+        <tr>
+            <td>{{ value.Name }}</td>
+            <td>{{ value.IP }}</td>
+            <td>{{ value.Version }}</td>
+        </tr>
+    {% endfor %}
+</table-->
