@@ -2,8 +2,9 @@ import requests
 from django.shortcuts import render , HttpResponse, HttpResponseRedirect
 from bs4 import BeautifulSoup
 import time
-from demoee import active_companies_dict
-from autoslug import AutoSlugField
+from api import active_companies_dict
+#from demoee import active_companies_dict
+#from autoslug import AutoSlugField
 import pandas as pd
 
 def ee(request):
@@ -329,9 +330,11 @@ def filter2(request):
         soup = BeautifulSoup(response.content, "html.parser")
         tb_elements = soup.find_all("table", {"class":"slpEwd"})
         tr_element = soup.find_all('tr', {'class': 'roXhBd'})
-        pb = tr_element[1].find('td', {'class': "QXDnM"}).text
-        print(pb)
-    id1="500209"
+        if len(tr_element)>0:
+            
+            pb = tr_element[1].find('td', {'class': "QXDnM"}).text
+            print(pb)
+    """id1="500209"
     bse2=f"https://www.google.com/finance/quote/{id1}:BOM"
     headers={
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
@@ -340,8 +343,9 @@ def filter2(request):
     soup = BeautifulSoup(response.content, "html.parser")
     tb_elements = soup.find_all("table", {"class":"slpEwd"})
     tr_element = soup.find_all('tr', {'class': 'roXhBd'})
-    pb = tr_element[1].find('td', {'class': "QXDnM"}).text
-    print(pb,"pb")
+    if len(tr_element)>0:
+        pb = tr_element[1].find('td', {'class': "QXDnM"}).text
+        print(pb,"pb")"""
     #print(soup)
     if len(soup)>0:
         print("yeeeeeeeeeesssssssssss")
@@ -351,9 +355,10 @@ def filter2(request):
     price=soup.find(class_=price_class).text
 
     # Find the tr element with class "roXhBd"
-    tb_elements = soup.find_all("table", {"class":"slpEwd"})
+    """tb_elements = soup.find_all("table", {"class":"slpEwd"})
     tr_element = soup.find_all('tr', {'class': 'roXhBd'})
-    td_element = tr_element[1].find('td', {'class': "QXDnM"}).text
+    if len(tr_element)>0:
+        td_element = tr_element[1].find('td', {'class': "QXDnM"}).text"""
     
     print("p1,p1")
     print(td_element,)
@@ -393,8 +398,8 @@ def filter2(request):
     else:
         print("Div element with id 'balanceSheetTT5' not found.")"""
 
-    for cl2 in soup:
-        pass
+    """for cl2 in soup:
+        pass"""
         #print(cl2 ,"\n\n\n\n\n")
         
 
@@ -403,7 +408,7 @@ def filter2(request):
     data={
         "price":price,
         #"soup":soup,
-        "cl2":cl2,
+        #"cl2":cl2,
         #"table":tb_elements,
         "tr":tr_element,
     }
