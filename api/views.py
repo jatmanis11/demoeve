@@ -84,8 +84,10 @@ def detail(request, id1):
     response= requests.get(bse2, headers=headers)
     soup = BeautifulSoup(response.content, "html.parser")
     if len(soup)>0:
+        a=True
         print("yeeeeeeeeeesssssssssss")
     else:
+        a=False
         print("nooooooooooooooooooo")
     price_class="YMlKec fxKbKc"
     volume_class="P6K39c"
@@ -117,67 +119,69 @@ def detail(request, id1):
     #print()
     #keys=data.keys()
     #print(filter1)
-    tb_elements = soup.find_all("table", {"class":"slpEwd"})
-    tr_element = soup.find_all('tr', {'class': 'roXhBd'})
-    revenue = tr_element[1].find('td', {'class': "QXDnM"}).text
-    operating_expense = tr_element[2].find('td', {'class': "QXDnM"}).text
-    net_income = tr_element[3].find('td', {'class': "QXDnM"}).text
-    net_profit_margin = tr_element[4].find('td', {'class': "QXDnM"}).text
-    earnings_per_share = tr_element[5].find('td', {'class': "QXDnM"}).text
-    EBITDA = tr_element[6].find('td', {'class': "QXDnM"}).text
-    effective_tax_rate = tr_element[7].find('td', {'class': "QXDnM"}).text
-    #revenue1 = tr_element[8].find('td', {'class': "QXDnM"}).text
-    cash_and_short_term_investments = tr_element[9].find('td', {'class': "QXDnM"}).text
-    total_assets = tr_element[10].find('td', {'class': "QXDnM"}).text
-    revenue2 = tr_element[11].find('td', {'class': "QXDnM"}).text
-    revenue3 = tr_element[12].find('td', {'class': "QXDnM"}).text
-    revenue4 = tr_element[13].find('td', {'class': "QXDnM"}).text
-    pb = tr_element[14].find('td', {'class': "QXDnM"}).text
-    revenue6 = tr_element[15].find('td', {'class': "QXDnM"}).text
-    revenue7 = tr_element[16].find('td', {'class': "QXDnM"}).text
-    #revenue8 = tr_element[17].find('td', {'class': "QXDnM"}).text
-    revenue9 = tr_element[18].find('td', {'class': "QXDnM"}).text
-    revenue10 = tr_element[19].find('td', {'class': "QXDnM"}).text
-    revenue11 = tr_element[20].find('td', {'class': "QXDnM"}).text
-    revenue12 = tr_element[21].find('td', {'class': "QXDnM"}).text
-    revenue13 = tr_element[22].find('td', {'class': "QXDnM"}).text
-    revenue14 = tr_element[23].find('td', {'class': "QXDnM"}).text
-    data2={
-        "id1":id1,
-        #"link":bse2,
-        #"soup":soup,
-        "data":m,
-        "com_data":com_data,
-         
-        #"soup":soup,
-        "price":price,
-        #"volume":traded_volume,
-        "revenue":revenue,
-        "operating_expense":operating_expense,
-        "net_income":net_income,
-        "net_profit_margin":net_profit_margin,
-        "earnings_per_share":earnings_per_share,
-        "EBITDA":EBITDA,
-        "effective_tax_rate":effective_tax_rate ,
-        "cash_and_short_term_investments":cash_and_short_term_investments,
-        "total_assets":total_assets,
-        "revenue2":revenue2,
-        "revenue3":revenue3,
-        "revenue4":revenue4,
-        "revenue5":pb,
-        "revenue6":revenue6,
-        "revenue7":revenue7,
-        #"revenue8":revenue8,
-        "revenue9":revenue9,
-        "revenue10":revenue10,
-        "revenue11":revenue11,
-        "revenue12":revenue12,
-        "revenue13":revenue13,
-        "revenue14":revenue14,
-        
-        
-        #"list_keys":keys
-    }
+    if a:
+        tb_elements = soup.find_all("table", {"class":"slpEwd"})
+        tr_element = soup.find_all('tr', {'class': 'roXhBd'})
+        revenue = tr_element[1].find('td', {'class': "QXDnM"}).text
+        operating_expense = tr_element[2].find('td', {'class': "QXDnM"}).text
+        net_income = tr_element[3].find('td', {'class': "QXDnM"}).text
+        net_profit_margin = tr_element[4].find('td', {'class': "QXDnM"}).text
+        earnings_per_share = tr_element[5].find('td', {'class': "QXDnM"}).text
+        EBITDA = tr_element[6].find('td', {'class': "QXDnM"}).text
+        effective_tax_rate = tr_element[7].find('td', {'class': "QXDnM"}).text
+        #revenue1 = tr_element[8].find('td', {'class': "QXDnM"}).text
+        cash_and_short_term_investments = tr_element[9].find('td', {'class': "QXDnM"}).text
+        total_assets = tr_element[10].find('td', {'class': "QXDnM"}).text
+        revenue2 = tr_element[11].find('td', {'class': "QXDnM"}).text
+        revenue3 = tr_element[12].find('td', {'class': "QXDnM"}).text
+        revenue4 = tr_element[13].find('td', {'class': "QXDnM"}).text
+        pb = tr_element[14].find('td', {'class': "QXDnM"}).text
+        revenue6 = tr_element[15].find('td', {'class': "QXDnM"}).text
+        revenue7 = tr_element[16].find('td', {'class': "QXDnM"}).text
+        #revenue8 = tr_element[17].find('td', {'class': "QXDnM"}).text
+        revenue9 = tr_element[18].find('td', {'class': "QXDnM"}).text
+        revenue10 = tr_element[19].find('td', {'class': "QXDnM"}).text
+        revenue11 = tr_element[20].find('td', {'class': "QXDnM"}).text
+        revenue12 = tr_element[21].find('td', {'class': "QXDnM"}).text
+        revenue13 = tr_element[22].find('td', {'class': "QXDnM"}).text
+        revenue14 = tr_element[23].find('td', {'class': "QXDnM"}).text
+        data2={
+            "id1":id1,
+            #"link":bse2,
+            #"soup":soup,
+            "data":m,
+            "com_data":com_data,
+             
+            #"soup":soup,
+            "price":price,
+            #"volume":traded_volume,
+            "revenue":revenue,
+            "operating_expense":operating_expense,
+            "net_income":net_income,
+            "net_profit_margin":net_profit_margin,
+            "earnings_per_share":earnings_per_share,
+            "EBITDA":EBITDA,
+            "effective_tax_rate":effective_tax_rate ,
+            "cash_and_short_term_investments":cash_and_short_term_investments,
+            "total_assets":total_assets,
+            "revenue2":revenue2,
+            "revenue3":revenue3,
+            "revenue4":revenue4,
+            "revenue5":pb,
+            "revenue6":revenue6,
+            "revenue7":revenue7,
+            #"revenue8":revenue8,
+            "revenue9":revenue9,
+            "revenue10":revenue10,
+            "revenue11":revenue11,
+            "revenue12":revenue12,
+            "revenue13":revenue13,
+            "revenue14":revenue14,
+            
+            
+            #"list_keys":keys
+        }
+    data2={}
     return render(request, "detail.html",data2)
 
 """
