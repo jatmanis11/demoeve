@@ -71,50 +71,6 @@ def ee(request):
 
     }
     return render(request, "ee.html",data1)
-def trash(request):
-    id="500327"
-    id=request.POST.get("search")
-    """nse_url="https://www.google.com/finance/quote/{id}:NSE"
-    bse_url="https://www.google.com/finance/quote/500325:BOM"
-
-    print(bse_url)
-    response= requests.get(bse_url)
-    print(response,"123123")
-   
-    soup = BeautifulSoup(response.text, "html.parser")
-    if len(soup)>0:
-        print("yeeeeeeeeeesssssssssss")
-    else:
-        print("nooooooooooooooooooo")
-    price_class="YMlKec fxKbKc"
-    volume_class="P6K39c"
-    revenue_class="QXDnM"
-    price=soup.find(class_=price_class).text
-    traded_volume=soup.find(class_=volume_class).text
-    revenue=soup.find(class_=revenue_class).text"""
-    data=active_companies_dict.data
-    m=[]
-    n=[]
-    k=[]
-    #print(data)
-    #print(id1,"id1")
-    #a=str(input("find company here"))
-    for n in data.keys():
-        #print(n)
-        if id1!=None:
-            if id1 in n:
-                #print(n)
-                m.append(data[n])
-    data={
-        #"url":bse_url,
-        #"d1":soup,
-        #"price":price,
-        #"volume":traded_volume,
-        #"revenue":revenue
-        #
-    }
-    return render(request, "trash.html",data)
-
 
 
 def detail(request, id1):
@@ -225,12 +181,12 @@ def detail(request, id1):
     }
     return render(request, "detail.html",data2)
 
-
+"""
 def filter1(request):
     value=request.POST.get("peratio")
     data=active_companies_dict.data
-    """for n in data:
-        id  """  
+    for n in data:
+        id  
     id1="500325"
     bse2=f"https://www.google.com/finance/quote/{id1}:BOM"
     headers={
@@ -251,7 +207,7 @@ def filter1(request):
     cl1=soup.find(class_=cl_1).text
     print(cl2)
     print(cl1)
-    """ elements = soup.select('[aria-describedby="i25"]')
+     elements = soup.select('[aria-describedby="i25"]')
     
     print(len(elements),"123")
     for element in elements:
@@ -259,7 +215,7 @@ def filter1(request):
     row = soup.find('tr', text=lambda text: 'Price to book' in text)
     # find the second column in the row
     value = row.find_all('td')[1].text
-    print(value,"bt")"""
+    print(value,"bt")
     
 
     # Find the tr element with class "roXhBd"
@@ -272,7 +228,7 @@ def filter1(request):
     
     print(tr_element[6],"tre")
     # Find the td element within the tr element with class "J9Jhg"
-    """td_element = tr_element.find('td', {'class': 'J9Jhg'})
+    td_element = tr_element.find('td', {'class': 'J9Jhg'})
     while td_element !=None:
         td_element = tr_element.find('td', {'class': 'J9Jhg'})
         print(td_element,"tde")
@@ -299,7 +255,7 @@ def filter1(request):
         data = td_element.text
         print(data)
     else:
-        print("Div element with id 'balanceSheetTT5' not found.")"""
+        print("Div element with id 'balanceSheetTT5' not found.")
 
     for cl2 in soup:
         pass
@@ -364,7 +320,7 @@ def filter2(request):
     
     #print(tr_element[6],"tre")
     # Find the td element within the tr element with class "J9Jhg"
-    """td_element = tr_element.find('td', {'class': 'J9Jhg'})
+    #td_element = tr_element.find('td', {'class': 'J9Jhg'})
     while td_element !=None:
         td_element = tr_element.find('td', {'class': 'J9Jhg'})
         print(td_element,"tde")
@@ -391,7 +347,7 @@ def filter2(request):
         data = td_element.text
         print(data)
     else:
-        print("Div element with id 'balanceSheetTT5' not found.")"""
+    #    print("Div element with id 'balanceSheetTT5' not found.")
 
     for cl2 in soup:
         pass
@@ -407,7 +363,7 @@ def filter2(request):
         #"table":tb_elements,
         "tr":tr_element,
     }
-    return render(request, "filter2.html", data)
+    return render(request, "filter2.html", data)"""
 #name: class="EY8ABd-OWXEXe-TAWMXe"   value: class="QXDnM" for 23 data
 #<div class="gyFHrc"><span data-is-tooltip-wrapper="true"><div class="mfs7Fc" jscontroller="e2jnoe" jsaction="mouseenter:tfO1Yc; focus:AHmuwe; blur:O22p3e; mouseleave:JywGue; touchstart:p6p2H; touchend:yfqBxc;mlnRJb:fLiPzd;" aria-describedby="c196" data-tooltip-x-position="2" data-tooltip-anchor-boundary-type="2">P/E ratio</div><div class="EY8ABd-OWXEXe-TAWMXe" role="tooltip" aria-hidden="true" id="c196">The ratio of current share price to trailing 12-month EPS that signals if the price is high or low compared to other stocks</div></span><div class="P6K39c">28.57</div></div>
 #class="YMlKec fxKbKc">₹2,960.00 rel25
