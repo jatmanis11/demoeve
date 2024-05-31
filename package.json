@@ -3,8 +3,4 @@
     "node": "18.x"
   }
 }
-"dependencies": {
-  ...
-  "requests": "^2.28.1"
-  ...
-}
+
