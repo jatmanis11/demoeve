@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 import time
 from api import active_companies_dict
 #from autoslug import AutoSlugField
-import pandas as pd
 
 def ee(request):
     id1="500327"
