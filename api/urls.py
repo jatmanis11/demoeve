@@ -22,6 +22,6 @@ urlpatterns = [
     path('', include('example.urls')),
     path("home",views.ee),
     path("stock-data/<id1>",views.detail),
-    path("filter1", views.filter1),
-    path("filter2", views.filter2)
+    #path("filter1", views.filter1),
+    #path("filter2", views.filter2)
 ]
