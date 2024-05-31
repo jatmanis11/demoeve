@@ -1,4 +1,4 @@
-import requests
+from api import requests
 from django.shortcuts import render , HttpResponse, HttpResponseRedirect
 from bs4 import BeautifulSoup
 import time
