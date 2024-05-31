@@ -31,8 +31,10 @@ def ee(request):
             id1=id1.lower() 
             if id1 in n.lower():
                 #print(n)
+                ak=True
                 m.append(data[n])
         else:
+            ak=False
             m.append("search company ")
             #print(n)
             #print(data[n])
@@ -57,16 +59,19 @@ def ee(request):
     traded_volume=soup.find(class_=volume_class).text
     revenue=soup.find(class_=revenue_class).text
     for n in soup :"""
-    data1={
-        """"url":bse_url,
-        "d1":soup,
-        "price":price,
-        "volume":traded_volume,
-        "revenue":revenue
-        "id":id1, 
-        "list":m,
-        #"listd":k,"""
-        
+    if ak:    
+        data1={
+            """"url":bse_url,
+            "d1":soup,
+            "price":price,
+            "volume":traded_volume,
+            "revenue":revenue
+            "id":id1, 
+            "list":m,
+            #"listd":k,"""
+    else:
+        data1={}
+            
 
     }
     return render(request, "ee.html",data1)
@@ -181,7 +186,8 @@ def detail(request, id1):
             
             #"list_keys":keys
         }
-    data2={}
+    else:
+        data2={}
     return render(request, "detail.html",data2)
 
 """
