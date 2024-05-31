@@ -64,13 +64,14 @@ def ee(request):
             "id1":id1, 
             "list":m,
             #"listd":k,
+        }
     else:
         data1={
             "pd4":id1,
         }
             
 
-    }
+    
     return render(request, "ee.html",data1)
 
 
