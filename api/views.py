@@ -62,10 +62,10 @@ def ee(request):
         "d1":soup,
         "price":price,
         "volume":traded_volume,
-        "revenue":revenue"""
+        "revenue":revenue
         "id":id1, 
         "list":m,
-        #"listd":k,
+        #"listd":k,"""
         
 
     }
