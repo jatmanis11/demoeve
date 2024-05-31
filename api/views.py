@@ -65,7 +65,9 @@ def ee(request):
             "list":m,
             #"listd":k,
     else:
-        data1={}
+        data1={
+            "pd4":id1,
+        }
             
 
     }
