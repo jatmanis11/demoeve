@@ -61,12 +61,7 @@ def ee(request):
     for n in soup :"""
     if ak:    
         data1={
-            "url":bse_url,
-            "d1":soup,
-            "price":price,
-            "volume":traded_volume,
-            "revenue":revenue
-            "id":id1, 
+            "id1":id1, 
             "list":m,
             #"listd":k,
     else:
