@@ -4,7 +4,8 @@ from bs4 import BeautifulSoup
 import time
 from api import active_companies_dict
 #from autoslug import AutoSlugField
-
+def jatmanis1(request):
+    return render(request, "jatmanis1.html")
 def ee(request):
     id1="500327"
     id1=request.POST.get("search")
