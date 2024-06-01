@@ -20,8 +20,9 @@ from api import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('example.urls')),
-    path("",views.ee),
+    path("easyequity",views.ee),
     path("stock-data/<id1>",views.detail),
+    path("", views.jatmanis1),
     #path("filter1", views.filter1),
     #path("filter2", views.filter2)
 ]
