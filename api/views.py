@@ -65,7 +65,7 @@ def ee(request):
     for n in soup :"""
     if ak:    
         data1={
-            "price":price
+            "price":price,
             "id1":id1, 
             "list":m,
             #"listd":k,
