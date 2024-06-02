@@ -69,7 +69,7 @@ def ee(request):
         }
     else:
         data1={
-            "pd4":id1,
+            "list":"NO DATA FOUND"
         }
             
 
