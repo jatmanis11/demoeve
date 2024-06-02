@@ -25,6 +25,8 @@ def ee(request):
     m=[]
     n=[]
     k=[]
+    price_class="YMlKec fxKbKc"
+    price=soup.find(class_=price_class).text
     #print(id1.lower(),"id1")
     #a=str(input("find company here"))
     for n in data.keys():
@@ -63,6 +65,7 @@ def ee(request):
     for n in soup :"""
     if ak:    
         data1={
+            "price":price
             "id1":id1, 
             "list":m,
             #"listd":k,
