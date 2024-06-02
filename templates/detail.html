@@ -18,10 +18,15 @@ Instrument:{{com_data.9}}<br>
 Sector Name\Industry\ New Name\Igroup Name\ISubgroup Name  <br>
 {{link}}<br>
 
-{{traded_volume}}<br>
-{{revenue}}<br>
-{{list_keys}}
-{{soup}}
+{% for n in t2 %}
+<h3>{{n.0}}: {{n.1}} </h3>
+<h7>{{n.2}}</h7><br><br><br>
+{% endfor %}
+
+{% for n in t1 %}
+<h3>{{n.0}}:{{n.1}} </h3>
+<h7>{{n.2}}</h7><br><br><br>
+{% endfor %}
 
 
 
@@ -32,7 +37,7 @@ Sector Name\Industry\ New Name\Igroup Name\ISubgroup Name  <br>
 8'Industry', 9'Instrument', 10'Sector Name', 11'Industry New Name', 12'Igroup Name', 13'ISubgroup Name']-->
 
 
-
+<!--
 wwwwwww<br>
 "{{revenue}}":revenue,<br>
 "operating_expense":{{operating_expense}},<br>
@@ -55,5 +60,5 @@ Cash from investing{{revenue11}}<br>
 Cash from financing{{revenue12}}<br>
 Net change in cash{{revenue13}}<br>
 Free cash flow{{revenue14}}<br>
-
+-->
 
