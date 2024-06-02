@@ -78,36 +78,22 @@ def ee(request):
 
 
 def detail(request, id1):
-    id1=id1
+        id1=id1
     headers={
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
     }
     #bse2=f"https://www.bseindia.com/stock-share-price/pil-italica-lifestyle-ltd/pilita/{id1}"
     bse2=f"https://www.google.com/finance/quote/{id1}:BOM"
-    #print(id1)
-    #print(bse2)
     response= requests.get(bse2, headers=headers)
     soup = BeautifulSoup(response.content, "html.parser")
     if len(soup)>0:
         a=True
-        print("yeeeeeeeeeesssssssssss")
     else:
         a=False
-        print("nooooooooooooooooooo")
-    price_class="YMlKec fxKbKc"
-    volume_class="P6K39c"
-    revenue_class="QXDnM"
-    price=soup.find(class_=price_class).text
-    traded_volume=soup.find(class_=volume_class).text
-    revenue=soup.find(class_=revenue_class).text
     data=active_companies_dict.data
 
     m=[]
-    n=[]
     k=[]
-    #print(data)
-    #print(id1,"id1")
-    #a=str(input("find company here"))
     for n in data.values():
 
         #print(n[0])
@@ -115,81 +101,62 @@ def detail(request, id1):
             
             if id1 == n[0]:
                 com_data=n
-                
-                #print("id1111")
-                #print(n)
                 m=n[0]
                 #m.append(data[n])
     
-    #print()
-    #keys=data.keys()
-    #print(filter1)
+    t1=[]
+    kj=1
     if a:
         tb_elements = soup.find_all("table", {"class":"slpEwd"})
-        tr_element = soup.find_all('tr', {'class': 'roXhBd'})
-        revenue = tr_element[1].find('td', {'class': "QXDnM"}).text
-        operating_expense = tr_element[2].find('td', {'class': "QXDnM"}).text
-        net_income = tr_element[3].find('td', {'class': "QXDnM"}).text
-        net_profit_margin = tr_element[4].find('td', {'class': "QXDnM"}).text
-        earnings_per_share = tr_element[5].find('td', {'class': "QXDnM"}).text
-        EBITDA = tr_element[6].find('td', {'class': "QXDnM"}).text
-        effective_tax_rate = tr_element[7].find('td', {'class': "QXDnM"}).text
-        #revenue1 = tr_element[8].find('td', {'class': "QXDnM"}).text
-        cash_and_short_term_investments = tr_element[9].find('td', {'class': "QXDnM"}).text
-        total_assets = tr_element[10].find('td', {'class': "QXDnM"}).text
-        revenue2 = tr_element[11].find('td', {'class': "QXDnM"}).text
-        revenue3 = tr_element[12].find('td', {'class': "QXDnM"}).text
-        revenue4 = tr_element[13].find('td', {'class': "QXDnM"}).text
-        pb = tr_element[14].find('td', {'class': "QXDnM"}).text
-        revenue6 = tr_element[15].find('td', {'class': "QXDnM"}).text
-        revenue7 = tr_element[16].find('td', {'class': "QXDnM"}).text
-        #revenue8 = tr_element[17].find('td', {'class': "QXDnM"}).text
-        revenue9 = tr_element[18].find('td', {'class': "QXDnM"}).text
-        revenue10 = tr_element[19].find('td', {'class': "QXDnM"}).text
-        revenue11 = tr_element[20].find('td', {'class': "QXDnM"}).text
-        revenue12 = tr_element[21].find('td', {'class': "QXDnM"}).text
-        revenue13 = tr_element[22].find('td', {'class': "QXDnM"}).text
-        revenue14 = tr_element[23].find('td', {'class': "QXDnM"}).text
+        print(len(tb_elements),"elelelele")
+        for m in tb_elements:
+            tr_element = m.find_all('tr', {'class': 'roXhBd'})
+            print(len(tr_element),"tr3e")
+            #tr_element= tr_element[1:8]+tr_element[9:15]+tr_element[17:len(tr_element)-1]
+            for n in tr_element[1:len(tr_element)]:
+            
+                print(n.index, kj)
+
+                v1=[]    
+                tr1_value = n.find('td', {'class': "QXDnM"}).text
+                
+                tr1_desc = n.find('td', {'class': "J9Jhg"}).text
+                tr1_name = n.find('div', {'class': "rsPbEe"}).text
+                v1.append(tr1_name)
+                v1.append(tr1_value)
+                v1.append(tr1_desc)
+                
+                t1.append(v1)
+                #print(t1,"t1")
+            
+        print(t1,"t12")
+    
+        t2=[]
+        tb_elements= soup.find('div', {'class': 'eYanAe'})
+        
+        #print(tb_elements,"tb222")
+        tr_1 = soup.find_all('div', {'class': 'vvDK2c'})
+        tr_2 = tb_elements.find_all('div', {'class': 'gyFHrc'})
+        for n in tr_2:
+            v1=[]
+            tr_value= n.find("div", {"class":"P6K39c"}).text
+            tr_name= n.find("div", {"class":"mfs7Fc"}).text
+            tr_desc= n.find("div", {"class":"EY8ABd-OWXEXe-TAWMXe"}).text
+            
+            v1.append(tr_name)
+            v1.append(tr_value)
+            v1.append(tr_desc)
+            t2.append(v1)
         data2={
+            "t1":t1,
+            "t2":t2,
             "id1":id1,
-            #"link":bse2,
-            #"soup":soup,
             "data":m,
             "com_data":com_data,
-             
-            #"soup":soup,
-            "price":price,
-            #"volume":traded_volume,
-            "revenue":revenue,
-            "operating_expense":operating_expense,
-            "net_income":net_income,
-            "net_profit_margin":net_profit_margin,
-            "earnings_per_share":earnings_per_share,
-            "EBITDA":EBITDA,
-            "effective_tax_rate":effective_tax_rate ,
-            "cash_and_short_term_investments":cash_and_short_term_investments,
-            "total_assets":total_assets,
-            "revenue2":revenue2,
-            "revenue3":revenue3,
-            "revenue4":revenue4,
-            "revenue5":pb,
-            "revenue6":revenue6,
-            "revenue7":revenue7,
-            #"revenue8":revenue8,
-            "revenue9":revenue9,
-            "revenue10":revenue10,
-            "revenue11":revenue11,
-            "revenue12":revenue12,
-            "revenue13":revenue13,
-            "revenue14":revenue14,
-            
-            
-            #"list_keys":keys
         }
     else:
         data2={}
     return render(request, "detail.html",data2)
-
 """
 def filter1(request):
     value=request.POST.get("peratio")
