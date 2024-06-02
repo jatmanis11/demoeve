@@ -3,12 +3,13 @@
         <form method="post">
             {% csrf_token %}
             <div> <input type="text" name="search"  /></div>
-            <div> <button type="submit"> like search</button> </div>
+            <div> <button type="submit"> Search Company</button> </div>
             <div> <input type="text" name="peratio"  /></div>
             <div> <button type="submit"> filter1</button> </div>
         </form>
     </div>
 </div>
+{{list1}}
 <!--price:{{price}}<br>
 volume:{{volume}}<br>
 revenue:{{revenue}}
