@@ -69,7 +69,7 @@ def ee(request):
         }
     else:
         data1={
-            "list":"NO DATA FOUND"
+            "list1":"NO DATA FOUND"
         }
             
 
