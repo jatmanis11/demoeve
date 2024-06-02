@@ -7,6 +7,7 @@ from api import active_companies_dict
 def jatmanis1(request):
     return render(request, "jatmanis1.html")
 def ee(request):
+    ak=False
     id1="500327"
     id1=request.POST.get("search")
     
