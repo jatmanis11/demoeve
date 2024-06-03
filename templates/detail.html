@@ -20,12 +20,12 @@ Sector Name\Industry\ New Name\Igroup Name\ISubgroup Name  <br>
 
 {% for n in t2 %}
 <h3 id="h2-{{ forloop.counter }}" onmouseover="document.getElementById('h7-{{ forloop.counter }}').style.display = 'block'" onmouseout="document.getElementById('h7-{{ forloop.counter }}').style.display = 'none'">{{n.0}} &nbsp; :<b> {{n.1}}</b></h3>
-<h4 id="h7-{{ forloop.counter }}" style="display: none;">{{n.2}}</h4>
+<h5 id="h7-{{ forloop.counter }}" style="display: none;">{{n.2}}</h5>
 <br><br>
 {% endfor %}
 {% for n in t1 %}
 <h3 id="h3-{{ forloop.counter }}" onmouseover="document.getElementById('h71-{{ forloop.counter }}').style.display = 'block'" onmouseout="document.getElementById('h71-{{ forloop.counter }}').style.display = 'none'">{{n.0}} &nbsp; : <b>{{n.1}}</b></h3>
-<h4 id="h71-{{ forloop.counter }}" style="display: none;">{{n.2}}</h4>
+<h5 id="h71-{{ forloop.counter }}" style="display: none;">{{n.2}}</h5>
 <br><br>
 {% endfor %}
 
