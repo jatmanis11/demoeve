@@ -19,15 +19,15 @@ Sector Name\Industry\ New Name\Igroup Name\ISubgroup Name  <br>
 {{link}}<br>
 
 {% for n in t2 %}
-<h3>{{n.0}}: {{n.1}} </h3>
-<h7>{{n.2}}</h7><br><br><br>
+<h3 id="h2-{{ forloop.counter }}" onmouseover="document.getElementById('h7-{{ forloop.counter }}').style.display = 'block'" onmouseout="document.getElementById('h7-{{ forloop.counter }}').style.display = 'none'">{{n.0}} &nbsp; :<b> {{n.1}}</b></h3>
+<h4 id="h7-{{ forloop.counter }}" style="display: none;">{{n.2}}</h4>
+<br><br>
 {% endfor %}
-
 {% for n in t1 %}
-<h3>{{n.0}}:{{n.1}} </h3>
-<h7>{{n.2}}</h7><br><br><br>
+<h3 id="h3-{{ forloop.counter }}" onmouseover="document.getElementById('h71-{{ forloop.counter }}').style.display = 'block'" onmouseout="document.getElementById('h71-{{ forloop.counter }}').style.display = 'none'">{{n.0}} &nbsp; : <b>{{n.1}}</b></h3>
+<h4 id="h71-{{ forloop.counter }}" style="display: none;">{{n.2}}</h4>
+<br><br>
 {% endfor %}
-
 
 
 
