@@ -77,12 +77,11 @@ WSGI_APPLICATION = 'api.wsgi.app'
 # Note: Django modules for using databases are not support in serverless
 # environments like Vercel. You can use a database over HTTP, hosted elsewhere.
 
-#DATABASES = {}
 DATABASE_URL="postgres://postgres:manijaat@localhost:5432/test4"
 
 ENGINE= 'django.db.backends.postgresql'
 #database_url = os.getenv('DATABASE_URL', 'postgres://postgres:manijaat@test4.postgres.database.vercel.app:5432/test4')
-database_url = os.getenv('DATABASE_URL', "postgres://default:p2tkYRlsguB5@ep-sweet-cake-a4xkp0v8-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require")
+database_url = os.getenv('DATABASE_URL', 'postgres://postgres:manijaat@localhost:5432/test4')
 try:
     conn = psycopg2.connect(os.environ['database_url'])
     print("Connection successful")
@@ -90,7 +89,7 @@ except Exception as e:
     print(f"Connection failed: {e}")
 # Parse the database URL
 DATABASES = {
-    'default': dj_database_url.parse(database_url),
+    'default': dj_database_url.parse(database_url)
 }
 
 
