@@ -80,23 +80,17 @@ WSGI_APPLICATION = 'api.wsgi.app'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 # Note: Django modules for using databases are not support in serverless
-# environments like Vercel. You can use a database over HTTP, hosted elsewhere.
-
-DATABASE_URL="postgres://postgres:manijaat@localhost:5432/test4"
+# environments like Vercel. You can use a database over HTTP, hosted elsewhere
+DATABASE_URL="postgres://default:p2tkYRlsguB5@ep-sweet-cake-a4xkp0v8-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
 
 ENGINE= 'django.db.backends.postgresql'
-#database_url = os.getenv('DATABASE_URL', 'postgres://postgres:manijaat@test4.postgres.database.vercel.app:5432/test4')
-database_url = os.getenv('DATABASE_URL', 'postgres://postgres:manijaat@localhost:5432/test4')
-try:
-    conn = psycopg2.connect(os.environ['database_url'])
-    print("Connection successful")
-except Exception as e:
-    print(f"Connection failed: {e}")
+database_url = os.getenv('DATABASE_URL', "postgres://default:p2tkYRlsguB5@ep-sweet-cake-a4xkp0v8-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
+)
+
 # Parse the database URL
 DATABASES = {
     'default': dj_database_url.parse(database_url)
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
