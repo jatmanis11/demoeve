@@ -25,4 +25,6 @@ urlpatterns = [
     path("", views.jatmanis1),
     #path("filter1", views.filter1),
     #path("filter2", views.filter2)
+    path("ffhe/", views.ff1),
+    path("ff_admin", views.ff_admin),
 ]
