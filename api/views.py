@@ -3,6 +3,7 @@ from django.shortcuts import render , HttpResponse, HttpResponseRedirect
 from bs4 import BeautifulSoup
 import time
 from api import active_companies_dict
+from heff.models import Team, Player,PlayerScore,Match
 #from autoslug import AutoSlugField
 def jatmanis1(request):
     return render(request, "jatmanis1.html")
@@ -355,6 +356,38 @@ def filter2(request):
 """Net income"""#>Company’s earnings for a period net of operating costs, taxes, and interest</div></span></td><td class="QXDnM">189.51B
 """Earnings per share"""#Represents the company's profit divided by the outstanding shares of its common stock.</div></span></td><td class="QXDnM">28.01
 """Net profit margin"""#Measures how much net income or profit is generated as a percentage of revenue.</div></span></td><td class="QXDnM">8.01	
+
+
+
+def ff1(request):
+    ff_player_data= Player.objects.all()
+    ff_team_data= Team.objects.all()
+    ff_match_data= Match.objects.all()
+    ff_player_score_data= PlayerScore.objects.all()
+    for n in ff_team_data:
+        print(n.player_list, n.name)
+    data={
+        "ff_player_data":ff_player_data,
+        "ff_team_data":ff_team_data,
+        "ff_match_data":ff_match_data,
+        "ff_player_score_data":ff_player_score_data,
+    }
+    return render(request, "ff.html", data)
+
+def ff_admin(request):
+    ff_player_data= Player.objects.all()
+    ff_team_data= Team.objects.all()
+    ff_match_data= Match.objects.all()
+    ff_player_score_data= PlayerScore.objects.all()
+    for n in ff_player_data:
+        print(n.player_name, n.uid)
+    data={
+        "ff_player_data":ff_player_data,
+        "ff_team_data":ff_team_data,
+        "ff_match_data":ff_match_data,
+        "ff_player_score_data":ff_player_score_data,
+    }
+    return render(request, "ff_admin.html", data)
 
 
 
