@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ff-admin</title>
+</head>
+<body>
+
+    <h1>Select a Class</h1>
+    
+    <!-- Dropdown menu to select a class -->
+    <select id="classDropdown">
+        {% for n in ff_match_data %}
+            <option value="{{ n.name }}">{{ n.name }}</option>
+        {% endfor %}
+    </select>
+    
+    <!-- Button to trigger the selection -->
+    <button onclick="selectClass()">Select Class</button>
+    
+    <p id="selectedClass">Selected class will be displayed here.</p>
+    
+    <script>
+        function selectClass() {
+            // Get the dropdown element
+            var dropdown = document.getElementById("classDropdown");
+            // Get the selected value
+            var selectedClass = dropdown.options[dropdown.selectedIndex].text;
+            // Display the selected class
+            document.getElementById("selectedClass").innerText = "Selected class: " + selectedClass.name;
+        }
+    </script>
+    
+</body>
+</html>

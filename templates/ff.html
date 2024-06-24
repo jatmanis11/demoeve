@@ -1,0 +1,32 @@
+sdsdfsdfdf
+{{ff_player_data}} <br>
+{% for n in ff_player_data %}
+    name {{n.player_name}} <br>
+    ign {{n.ign}} <br>
+    uid {{n.uid}}<br>
+    team {{n.team}} <br>
+    score {{n.total_tournament_score}}<br><br>
+
+
+{% endfor %} <br><br>
+{% for n in ff_team_data %}
+    {{n.name}} <br>
+    {{n.total_score}}<br>
+    pt: {{n.player_list}}<br>
+{% endfor %}<br><br>
+
+{% for n in ff_match_data %}
+    {{n}}<br>
+{% endfor %}<br><br>
+{% for n in ff_player_score_data %}
+    {{n.player}}<br>
+     match {{n.match}} 
+     score {{n.score}}<br>
+{% endfor %}<br><Br>
+<!--player_name = models.CharField(max_length=50)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='players')
+    uid = models.CharField(max_length=50, unique=True)
+    ign = models.CharField(max_length=50, unique=True)
+    email = models.EmailField(unique=True)
+    phone_no = models.CharField(max_length=15)
+    college_name -->
