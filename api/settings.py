@@ -85,8 +85,7 @@ WSGI_APPLICATION = 'api.wsgi.app'
 DATABASE_URL="postgres://default:p2tkYRlsguB5@ep-sweet-cake-a4xkp0v8-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
 
 ENGINE= 'django.db.backends.postgresql'
-database_url = os.getenv('DATABASE_URL', "postgres://default:1m9uwZpbrHPa@ep-hidden-truth-a1mwev52.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require"
-)
+database_url = os.getenv('DATABASE_URL', "postgresql://postgres:BXctXbieqkgTNqJGbPLQgNUDzqgfIkaO@viaduct.proxy.rlwy.net:28529/railway")
 
 # Parse the database URL
 DATABASES = {
