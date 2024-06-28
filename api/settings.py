@@ -86,7 +86,6 @@ DATABASE_URL="postgres://default:p2tkYRlsguB5@ep-sweet-cake-a4xkp0v8-pooler.us-e
 
 ENGINE= 'django.db.backends.postgresql'
 database_url = os.getenv('DATABASE_URL', "postgresql://postgres:BXctXbieqkgTNqJGbPLQgNUDzqgfIkaO@viaduct.proxy.rlwy.net:28529/railway")
-
 # Parse the database URL
 DATABASES = {
     'default': dj_database_url.parse(database_url)
