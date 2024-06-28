@@ -5,6 +5,134 @@ import time
 from api import active_companies_dict
 from heff.models import Team, Player,PlayerScore,Match
 #from autoslug import AutoSlugField
+from heff.models import Team, Player,PlayerScore,Match
+from django.db.models import Sum
+#from django import template
+
+def ff1(request):
+    ff_player_data= Player.objects.all()
+    ff_team_data= Team.objects.all()
+    ff_match_data= Match.objects.all()
+    ff_player_score_data= PlayerScore.objects.all()
+    #for n in ff_team_data:
+        #print(n.player_list, n.name)
+    data={
+        "ff_player_data":ff_player_data,
+        "ff_team_data":ff_team_data,
+        "ff_match_data":ff_match_data,
+        "ff_player_score_data":ff_player_score_data,
+        
+    }
+    return render(request, "ff.html", data)
+
+def ff_admin(request):
+    ff_player_data= Player.objects.all()
+    ff_team_data= Team.objects.all()
+    ff_match_data= Match.objects.all()
+    ff_player_score_data= PlayerScore.objects.all()
+    #classes = Class.objects.all()
+    #for n in ff_player_data:
+    #   print(n.player_name, n.uid)
+    ##print(ff_match_data)
+    classes =  Match.objects.all()
+    match_name = request.GET.get('class_id')
+    team_name = request.GET.get('team_id')
+    player_name = request.GET.get('player_id')
+    player_score_name = request.GET.get('player_score_id')
+    team_scores = PlayerScore.objects.filter(match=match_name).values('player__team__name').annotate(total_score=Sum('score')).order_by('-total_score')
+    team_dict = {team.name: team.id for team in ff_team_data}
+    for n in team_scores:
+        print(n['player__team__name'], n["total_score"])
+    #class_objects =
+    #print(match_name)
+    #print(team_name)
+    
+    if int(match_name)==1000:
+        match_id_list=[1,2,3]
+        team_scores = PlayerScore.objects.filter(match__id__in=match_id_list).values('player__team__name', 'player__team__id').annotate(total_score=Sum('score')).order_by('-total_score')
+        print("qweqweqwe",team_scores)
+
+
+
+    data={
+        "ff_player_data":ff_player_data,
+        "ff_team_data":ff_team_data,
+        "ff_match_data":ff_match_data,
+        "ff_player_score_data":ff_player_score_data,
+        'classes': classes,
+        'selected_class_id': match_name,
+        "team_scores":team_scores,
+        "team_dict":team_dict,
+        
+        #"selected_team":selected_team,
+
+    }
+    if match_name:
+        for n in ff_match_data:
+            if int(n.id)==int(match_name):
+                data["selected_match"]=n
+    selected_team_player=[]
+    if team_name:
+        print("sdfsdfsdf")
+        for n in ff_team_data:
+            if n.name ==team_name:
+                selected_team=n
+                print("team seleceted")
+                for n in ff_player_data:
+                    if n.team ==selected_team :
+                        selected_team_player.append(n)
+
+                data['selected_team']= selected_team
+                data['selected_team_player']=selected_team_player
+    return render(request, "ff_admin.html", data)
+
+def player(request, player_id):
+    print(player_id)
+    player_id=player_id
+    ff_player_data= Player.objects.all()
+    for n in ff_player_data:
+        print("n.id",n.id)
+        if int(n.id)==int(player_id):
+            print("aaaaaaaaaaaaaaaaaaaa")
+            player=n
+            break
+        else:
+            player="player not found"
+    print(player)
+    data={
+        "player":player,
+    }
+    return render(request, "player.html",data)
+selected_team_player=[]
+def team(request, team_id):
+    selected_team_player=[]
+    team_id=team_id
+    print(team_id)
+    ff_team_data=Team.objects.all()
+    ff_player_data=Player.objects.all()
+    data={}
+    if team_id:
+        print("sdfsdfsdf")
+        for n in ff_team_data:
+            print(n.id)
+            if int(n.id) ==int(team_id):
+                selected_team=n
+                print("team seleceted")
+                for n in ff_player_data:
+                    if n.team ==selected_team :
+                        selected_team_player.append(n)
+
+                        data['selected_team']= selected_team
+                        data['players']=selected_team_player
+    print(data)
+    return render(request, "team.html", data)
+
+def pointtable(request):
+    ff_player_data= Player.objects.all()
+    ff_team_data= Team.objects.all()
+    ff_match_data= Match.objects.all()
+    ff_player_score_data= PlayerScore.objects.all()
+
 def jatmanis1(request):
     return render(request, "jatmanis1.html")
 def ee(request):
