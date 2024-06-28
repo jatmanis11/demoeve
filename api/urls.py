@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from api import views
+from api import views, form
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +27,9 @@ urlpatterns = [
     #path("filter2", views.filter2)
     path("ffhe/", views.ff1),
     path("ff_admin", views.ff_admin),
+    path("ffhe/player/<player_id>/", views.player),
+    path("ffhe/team/<team_id>/",views.team),
+    path('select-match/', form.match_selection_view, name='match_selection'),
+    path('select-team/', form.team_selection_view, name='team_selection'),
+    path('player-scores/', form.player_scores_view, name='player_scores'),
 ]
