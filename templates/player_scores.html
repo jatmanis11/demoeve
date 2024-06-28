@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Player Scores</title>
+</head>
+<body>
+    <h1>Player Scores for {{ selected_match }}</h1>
+    <h2>Team: {{ selected_team }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Player Name</th>
+                <th>Total Score</th>
+                <th>Score in Selected Match</th>
+                <th>Add Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in players %}
+                <tr>
+                    <td>{{ player.name }}</td>
+                    <td>{{ player.total_score }}</td>
+                    <td>{{ player.score_in_selected_match }}</td>
+                    <td>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ player_score_form.as_p }}
+                            <input name="player_id" value="{{ player.id }}">
+                            <button type="submit">Add Score</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -3,34 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ff-admin</title>
+    <title> Match Standings</title>
 </head>
 <body>
 
-    <h1>Select a Class</h1>
+    <h1>select match</h1>
     
-    <!-- Dropdown menu to select a class -->
-    <select id="classDropdown">
-        {% for n in ff_match_data %}
-            <option value="{{ n.name }}">{{ n.name }}</option>
+    <!-- Form to select a class -->
+    <form method="GET" action="">
+        <select name="class_id" id="classDropdown">
+            {% for class in classes %}
+                <option value="{{ class.id }}" {% if class.name == selected_class_id %}selected{% endif %}>{{ class.name }}</option>
+            {% endfor %}
+            <option value="1000" >Total score</option>
+        </select>
+        <button type="submit">Select Match</button>
+    </form>
+    
+    <!-- Section to display the selected class objects -->
+    <ul id="classObjects">
+        <li>{{ selected_match.name }}</li>
+        <li>{{ selected_match.date }}</li>
+    </ul>
+    <!--
+    <body>
+        <h1>Match: {{ selected_match.name }}</h1>
+        <h2>Date: {{ selected_match.date }}</h2>
+    
+        <table border="1">
+            <thead>
+                <tr>
+                    <th style="color: blue; font-family: Arial, sans-serif; font-size: 20px;">#</th>
+                    <th style="color: blue; font-family: Arial, sans-serif; font-size: 20px;">Team</th>
+                    <th style="color: blue; font-family: Arial, sans-serif; font-size: 20px;">Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for team_score in team_scores %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ team_score.player__team__name }}</td>
+                        <td>{{ team_score.total_score }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+
+    <!--teams--
+    <h1>select match</h1>
+    
+    <!-- Form to select a class --
+    <form method="GET" action="">
+        <select name="team_id" id="classDropdown">
+            {% for team in ff_team_data %}
+                <option value="{{ team.name }}" {% if team.name == selected_class_id %}selected{% endif %}>{{ team.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Select Team</button>
+    </form>
+    
+    <!-- Section to display the selected class objects --
+    <h2>Team {{selected_team.name}}</h2>
+    <ul id="classObjects">
+        <li>{{ selected_team.name }}</li>
+        <li>{{ selected_team.total_score }}</li>
+        {% for n in selected_team_player %}
+            player  {{forloop.counter}} <a href="/ffhe/player/{{n.id}}">{{n}}</a><br>
         {% endfor %}
-    </select>
-    
-    <!-- Button to trigger the selection -->
-    <button onclick="selectClass()">Select Class</button>
-    
-    <p id="selectedClass">Selected class will be displayed here.</p>
-    
-    <script>
-        function selectClass() {
-            // Get the dropdown element
-            var dropdown = document.getElementById("classDropdown");
-            // Get the selected value
-            var selectedClass = dropdown.options[dropdown.selectedIndex].text;
-            // Display the selected class
-            document.getElementById("selectedClass").innerText = "Selected class: " + selectedClass.name;
-        }
-    </script>
-    
+        <!--player1:<li>{{ selected_team_player.0 }}</li>
+        player2:<li>{{ selected_team_player.1 }}</li>
+        player3:<li>{{ selected_team_player.2 }}</li>
+        player4:<li>{{ selected_team_player.3 }}</li>
+        player5:<li>{{ selected_team_player.4 }}</li>
+        player6:<li>{{ selected_team_player.5 }}</li>
+        
+    </ul>-->
+
+{{data.class_obj}}
+</body>
+<head>
+  <title>Free Fire World Series Standings</title>
+</head>
+<body>
+
+  <h1 style="color: #333; font-size: 24px; margin-bottom: 10px;">Free Fire {{selected_match.name}}</h1>
+
+  <table  border="1">
+    <thead>
+      <tr >
+        <th class="rank">Rank</th>
+        <th class="team">Team</th>
+        <th class="booyah">Booyah!</th>
+        <th class="kills">Kills</th>
+        <th class="total">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+       {% for team1 in team_scores %} 
+            {% if forloop.counter0|divisibleby:2  %}
+                <tr style="background-color: rgba(255, 255, 24, 0.5); ">
+                    <td>{{ forloop.counter}}</td>
+                    <td><a href="/ffhe/team/{{team1.player__team__id}}">{{ team1.player__team__name }}<a></td>
+                    <td></td>
+                    <td> {{team1.total_score}}</td>
+                    <td> {{team1.total_score}}</td>
+                </tr>
+            {% else %}
+                <tr style="background-color: rgba(255, 255, 255, 1)">
+                    <td>{{ forloop.counter}}</td>
+                    <td><a href="/ffhe/team/{{team1.player__team__id}}">{{ team1.player__team__name }}<a></td>
+                    <td></td>
+                    <td> {{team1.total_score}}</td>
+                    <td> {{team1.total_score}}</td>
+                    <td><span class="up-arrow"></span> {{change_score}}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+            
+                
+      <tr style="background-color: rgba(255, 255, 255, 1)">
+    </tbody>
+  </table>
+
 </body>
 </html>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2; /* light gray background */
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+      border: 1px solid #ccc; /* light gray border */
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #ddd; /* light gray border */
+    }
+
+    th {
+      background-color: #333; /* dark gray background */
+      color: #fff; /* white text */
+      font-weight: bold;
+    }
+
+   .rank {
+      width: 50px;
+      text-align: center;
+    }
+
+   .team {
+      width: 200px;
+    }
+
+   .booyah {
+      width: 80px;
+      text-align: center;
+    }
+
+   .kills {
+      width: 80px;
+      text-align: center;
+    }
+
+   .total {
+      width: 80px;
+      text-align: center;
+    }
+
+   .change {
+      width: 50px;
+      text-align: center;
+    }
+
+   .up-arrow {
+      color: #0f0; /* green text */
+    }
+
+   .down-arrow {
+      color: #f00; /* red text */
+    }
+  </style>
+
+
+

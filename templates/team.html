@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Player List</title>
+</head>
+<body>
+    <h1>Team {{selected_team.name}}</h1>
+    <h3>Player List</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>IGN</th>
+                <th>UID</th>
+                <th>Total Tournament Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in players %}
+                <tr>
+                    <td>{{forloop.counter}}
+                    <td><a href="/ffhe/player/{{player.id}}/">{{player.player_name}}</td>
+                    <td>{{ player.ign }}</td>
+                    <td>{{ player.uid }}</td>
+                    <td>{{ player.total_tournament_score }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
